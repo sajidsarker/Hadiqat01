@@ -22,16 +22,21 @@ from keras.preprocessing.image import array_to_img
 
 class GenerativeAdversarialNetwork():
     def __init__(self, path_to_input, input_mask, input_shape, latent_space):
+        print('Input Shape: {}\n Latent Shape: {}\nTraining Image Data: {}/*{}'.format(input_shape, latent_space, path_to_input, input_mask))
         self.input_shape = input_shape
         self.latent_space = latent_space
-        self.data = self.load_data(path_to_input, input_mask)
+        #self.data = self.load_data(path_to_input, input_mask)
         # Configure our component and composite models
-        self.generator = self.configure_generator()
-        self.discriminator = self.configure_discriminator()
-        self.model = self.configure_generative_adversarial_network()
+        print('[1] Configuring Generator ...')
+        #self.generator = self.configure_generator()
+        print('[2] Configuring Discriminator ...')
+        #self.discriminator = self.configure_discriminator()
+        print('[3] Configuring Generative Adversarial Network ...')
+        #self.model = self.configure_generative_adversarial_network()
 
     def load_data(self, path_to_input, input_mask):
         files = os.listdir(path_to_input)
+        #files = files[:25]
         # Applying input mask to list of files in directory
         for file in files:
             if file[-3] != input_mask:
@@ -148,6 +153,6 @@ class GenerativeAdversarialNetwork():
                 print("Epoch [{}]: Batch [{} / {}] / Discriminator Loss={}%, Generator Loss={}%".format(i+1, j+1, int(self.data.shape[0] / num_batch), discriminator_loss, generator_loss))
 
 if __name__ == "__main__":
-    SAN_GAN = GenerativeAdversarialNetwork('~/Desktop/Hadiqat01/training-image-data', '.JPG', (500, 500, 3), 100)
-    SAN_GAN.train()
-    SAN_GAN.export('~/Desktop/Hadiqat01/model-weights')
+    hadiqat01 = GenerativeAdversarialNetwork('~/Desktop/Hadiqat01/training-image-data', '.JPG', (500, 500, 3), 100)
+    #hadiqat01.train()
+    #hadiqat01.export('~/Desktop/Hadiqat01/model-weights')
