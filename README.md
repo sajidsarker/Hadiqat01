@@ -2,4 +2,4 @@
 
 An Artificial Intelligence.
 
-A Walled Garden of Truth
+A Walled Garden of Truth.
