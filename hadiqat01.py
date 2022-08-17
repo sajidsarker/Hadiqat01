@@ -26,6 +26,7 @@ from PIL import Image
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import array_to_img
 
+# Generative Adversarial Network Class
 class GenerativeAdversarialNetwork():
     def __init__(self, path_to_input, input_mask, input_shape, latent_space):
         print('Input Shape: {}\n Latent Shape: {}\nTraining Image Data: {}/*{}'.format(input_shape, latent_space, path_to_input, input_mask))
@@ -158,7 +159,10 @@ class GenerativeAdversarialNetwork():
 
                 print("Epoch [{}]: Batch [{} / {}] / Discriminator Loss={}%, Generator Loss={}%".format(i+1, j+1, int(self.data.shape[0] / num_batch), discriminator_loss, generator_loss))
 
-if __name__ == "__main__":
+def main():
     hadiqat01 = GenerativeAdversarialNetwork('~/Desktop/Hadiqat01/training-image-data', '.JPG', (500, 500, 3), 100)
-    #hadiqat01.train()
-    #hadiqat01.export('~/Desktop/Hadiqat01/model-weights')
+    hadiqat01.train()
+    hadiqat01.export('~/Desktop/Hadiqat01/model-weights')
+
+if __name__ == "__main__":
+    main()
