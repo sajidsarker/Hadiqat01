@@ -1,8 +1,13 @@
+#!/usr/bin/env python3
+
+# Standard Packages
 import os
 
+# Data Science Packages
 import numpy as np
 import matplotlib as plt
 
+# Machine Learning Packages
 from keras.models import Sequential
 from keras.models import save_model
 from keras.models import save_weights
@@ -16,6 +21,7 @@ from keras.layers import Conv2D
 from keras.layers import Conv2DTranspose
 from keras.utils.vis_utils import plot_model
 
+# Image Processing Packages
 from PIL import Image
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import array_to_img
