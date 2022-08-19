@@ -152,6 +152,9 @@ class GenerativeAdversarialNetwork():
 
                 print("Epoch [{}]: Batch [{} / {}] / Discriminator Loss={}%, Generator Loss={}%".format(i+1, j+1, int(self.data.shape[0] / num_batch), discriminator_loss, generator_loss))
 
-hadiqat01 = GenerativeAdversarialNetwork('~/Desktop/Hadiqat01/training-image-data', '.JPG', (500, 500, 3), 100)
-#hadiqat01.train()
-#hadiqat01.export('~/Desktop/Hadiqat01/model-weights')
+def main():
+    hadiqat01 = GenerativeAdversarialNetwork('~/Desktop/Hadiqat01/training-image-data', '.JPG', (500, 500, 3), 100)
+    #hadiqat01.train()
+    #hadiqat01.export('~/Desktop/Hadiqat01/model-weights')
+
+main()
