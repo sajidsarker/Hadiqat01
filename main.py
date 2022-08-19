@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib as plt
 
 from keras.models import Sequential
-from keras.models import save_model
-from keras.models import save_weights
+#from keras.models import save_model
+#from keras.models import save_weights
 from keras.optimizers import Adam
 from keras.layers import Dense
 from keras.layers import Flatten
@@ -17,8 +17,8 @@ from keras.layers import Conv2DTranspose
 from keras.utils.vis_utils import plot_model
 
 from PIL import Image
-from keras.preprocessing.image import img_to_array
-from keras.preprocessing.image import array_to_img
+#from keras.preprocessing.image import img_to_array
+#from keras.preprocessing.image import array_to_img
 
 class GenerativeAdversarialNetwork():
     def __init__(self, path_to_input, input_mask, input_shape, latent_space):
@@ -28,11 +28,11 @@ class GenerativeAdversarialNetwork():
         #self.data = self.load_data(path_to_input, input_mask)
         # Configure our component and composite models
         print('[1] Configuring Generator ...')
-        #self.generator = self.configure_generator()
+        self.generator = self.configure_generator()
         print('[2] Configuring Discriminator ...')
-        #self.discriminator = self.configure_discriminator()
+        self.discriminator = self.configure_discriminator()
         print('[3] Configuring Generative Adversarial Network ...')
-        #self.model = self.configure_generative_adversarial_network()
+        self.model = self.configure_generative_adversarial_network()
 
     def load_data(self, path_to_input, input_mask):
         files = os.listdir(path_to_input)
@@ -54,7 +54,7 @@ class GenerativeAdversarialNetwork():
         return data
     
     def export(self, path_to_output):
-        save_model(
+        '''save_model(
             model=self.generator,
             filepath=path_to_output,
             overwrite=True,
@@ -69,7 +69,7 @@ class GenerativeAdversarialNetwork():
             overwrite=True,
             save_format='tf',
             options=None
-        )
+        )'''
 
     def configure_generator(self, num_variation=128):
         model = Sequential()
