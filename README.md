@@ -1,5 +1,5 @@
 # Hadiqat01
 
-An Artificial Intelligence.
+**Sajid Sarker**
 
-A Walled Garden of Truth.
+A prototypical Artificial Intelligence built on a Generative Adversarial Network.
