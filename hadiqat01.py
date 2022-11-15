@@ -10,7 +10,7 @@ import matplotlib as plt
 # Machine Learning Packages
 from keras.models import Sequential
 from keras.models import save_model
-from keras.models import save_weights
+#from keras.models import save_weights
 from keras.optimizers import Adam
 from keras.layers import Dense
 from keras.layers import Flatten
@@ -56,10 +56,10 @@ class GenerativeAdversarialNetwork():
             data[i, :, :, :] = read(file)
             i += 1
         # Preprocessing (Normalisation) dataset
-        data = data.astype('float32')
-        data = data / 255.0
+        data = data.astype('float32') / 255.0
         return data
     
+    '''
     def export(self, path_to_output):
         save_model(
             model=self.generator,
@@ -77,6 +77,7 @@ class GenerativeAdversarialNetwork():
             save_format='tf',
             options=None
         )
+    '''
 
     def configure_generator(self, num_variation=128):
         model = Sequential()
@@ -161,8 +162,8 @@ class GenerativeAdversarialNetwork():
 
 def main():
     hadiqat01 = GenerativeAdversarialNetwork('~/Desktop/Hadiqat01/training-image-data', '.JPG', (500, 500, 3), 100)
-    hadiqat01.train()
-    hadiqat01.export('~/Desktop/Hadiqat01/model-weights')
+    #hadiqat01.train()
+    #hadiqat01.export('~/Desktop/Hadiqat01/model-weights')
 
 if __name__ == "__main__":
     main()
