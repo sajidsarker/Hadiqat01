@@ -35,11 +35,11 @@ class GenerativeAdversarialNetwork():
         #self.data = self.load_data(path_to_input, input_mask)
         # Configure our component and composite models
         print('[1] Configuring Generator ...')
-        #self.generator = self.configure_generator()
+        self.generator = self.configure_generator()
         print('[2] Configuring Discriminator ...')
-        #self.discriminator = self.configure_discriminator()
+        self.discriminator = self.configure_discriminator()
         print('[3] Configuring Generative Adversarial Network ...')
-        #self.model = self.configure_generative_adversarial_network()
+        self.model = self.configure_generative_adversarial_network()
 
     def load_data(self, path_to_input, input_mask):
         files = os.listdir(path_to_input)
@@ -86,7 +86,8 @@ class GenerativeAdversarialNetwork():
         num_nodes = int(num_nodes)
         model.add(Dense(num_nodes, input_dim=self.latent_space))
         model.add(LeakyReLU(alpha=0.2))
-        model.add(Reshape(int(self.input_shape[0] * 0.25), int(self.input_shape[1] * 0.25), self.input_shape[2], num_variation))
+        #model.add(Reshape(int(self.input_shape[0] * 0.25), int(self.input_shape[1] * 0.25), self.input_shape[2], num_variation))
+        model.add(Reshape((int(self.input_shape[0] * 0.25), int(self.input_shape[1] * 0.25)), input_shape=self.input_shape[2]))
         # Hidden Layer 1 / 50% nodes upsample
         model.add(Conv2DTranspose(num_variation, kernel_size=4, strides=(2, 2), padding='same'))
         model.add(LeakyReLU(alpha=0.2))
@@ -161,7 +162,7 @@ class GenerativeAdversarialNetwork():
                 print("Epoch [{}]: Batch [{} / {}] / Discriminator Loss={}%, Generator Loss={}%".format(i+1, j+1, int(self.data.shape[0] / num_batch), discriminator_loss, generator_loss))
 
 def main():
-    hadiqat01 = GenerativeAdversarialNetwork('~/Desktop/Hadiqat01/training-image-data', '.JPG', (500, 500, 3), 100)
+    hadiqat01 = GenerativeAdversarialNetwork('~/Desktop/Hadiqat01/training-image-data', '.JPG', (10, 10, 3), 2)
     #hadiqat01.train()
     #hadiqat01.export('~/Desktop/Hadiqat01/model-weights')
 
